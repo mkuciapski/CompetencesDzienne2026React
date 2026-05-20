@@ -8,7 +8,7 @@ export default function Competences() {
       <img src={`assets/${competence.Picture}`} />
       <div className="card-body">
         <p>Poziom: {competence.Level}</p>
-        <p>Opis: {competence.Description}</p>
+        {competence.Description && <p> Opis: {competence.Description}</p>}
       </div>
     </div>
   ));

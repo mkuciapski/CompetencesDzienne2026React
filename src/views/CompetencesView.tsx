@@ -1,32 +1,33 @@
 import { competences } from "../assets/Competences";
+import CompetenceCard from "../components/CompetenceCard";
+import React, { useState, useEffect } from "react";
 
 export default function Competences() {
-  // const [competence] = useState(competences[1]);
-  const listCompetences = competences.map(
-    (competence) =>
-      competence.Level > 0 && (
-        <div className="card bg-base-100 w-48 shadow-sm card-spacing">
-          <h2 className="text-center text-xl uppercase">{competence.Name}</h2>
-          <img src={`assets/${competence.Picture}`} />
-          <div className="card-body">
-            <p
-              style={{
-                color:
-                  competence.Level < 3
-                    ? "red"
-                    : competence.Level === 3
-                      ? "black"
-                      : "green",
-              }}
-            >
-              Poziom: {competence.Level}
-            </p>
-            {competence.Description && <p> Opis: {competence.Description}</p>}
-          </div>
-        </div>
-      ),
-  );
+  const [_competences, setCompetences] = useState(competences);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCompetences((internal) => [
+        ...internal,
+        {
+          Id: 12,
+          Name: "SQL",
+          Level: 2,
+          Picture: "bootstrap.svg",
+          Description: "Bazy danych",
+        },
+      ]);
+    }, 5000);
+  }, []);
+
   return (
-    <div className="flex flex-wrap justify-center gap-2">{listCompetences}</div>
+    <div className="flex flex-wrap justify-center gap-2">
+      {_competences.map(
+        (competence, Id) =>
+          competence.Level > 0 && (
+            <CompetenceCard key={competence.Id} competence={competence} />
+          ),
+      )}
+    </div>
   );
 }

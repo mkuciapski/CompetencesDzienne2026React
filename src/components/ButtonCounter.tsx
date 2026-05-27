@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 
-const ButtonCounter = () => {
-  const [count, setCount] = useState(0);
+const ButtonCounter = ({
+  initialCount,
+  onClick,
+}: {
+  initialCount: number;
+  onClick: () => void;
+}) => {
+  const [count, setCount] = useState(initialCount);
   function increaseCounter() {
     setCount(count + 1);
+    onClick();
   }
   return (
     <div>

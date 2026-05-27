@@ -2,7 +2,7 @@ export const competences = [
   {
     Id: 1,
     Name: "Bootstrap",
-    Level: 4,
+    Level: 0,
     Picture: "bootstrap.svg",
     Description: "Wersja 3",
   },

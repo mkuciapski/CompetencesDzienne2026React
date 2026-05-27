@@ -8,7 +8,11 @@ const ButtonCounter = () => {
   return (
     <div>
       <p>Count: {count}</p>
-      <button class="btn btn-success" onClick={increaseCounter}>
+      <button
+        className={`btn btn-success ${count > 3 ? "text-lg" : "text-default"}`}
+        onClick={increaseCounter}
+        style={{ color: count > 3 ? "orange" : "pink" }}
+      >
         Increment
       </button>
     </div>
